@@ -1,0 +1,138 @@
+<html>
+
+
+<head>
+<meta http-equiv="Content-Language" content="es">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>FallasKenan</title>
+<style>
+<!--
+ table.MsoNormalTable
+	{mso-style-parent:"";
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	}
+-->
+</style>
+</head>
+
+<body bgcolor="#C0C0C0">
+
+<p align="center"><u><font size="6" color="#0000FF">ACTIVIDADES SACAS</font></u></p>
+ <hr>
+  <font color="#0000FF"><b>INDICE:</b></font><br>
+1-Activa Usuario toad  penta (PENTAHO) <br>
+2-Activa Usuario toad  penta (PENTAHO) <br>
+3-Activa Usuario toad  penta (PENTAHO) <br>
+ <hr>
+<p align="center"><u><font size="6" color="#0000FF">3-Activa Usuario toad  penta (PENTAHO)</font></u></p>
+<IMG SRC="Imagenes/SACAS/sacas001.JPG" ALT="PRUEBA" BORDER=2> <br>
+• PENTAHOGSCOR1 <br>
+• Entrar en la tabla                  R_USER <br>
+• Dar click derecho (Open Tabla) <br>
+• En el campo ENABLED aparece N se coloca Y   <br>
+• En el campo FECHA_CREACION_CLAVE) - (FECHA_ULTIMO_ACCESO) - (FECHA_CREACION)  colocas la misma fecha del año Anterior <br>
+• Le das al icono del diskette para salvarlo <br>
+• Se inicia el Kettle  y pedirá (usuario)  penta y la ultima clave que tenia. <br>
+• Luego te pedirá que coloques el nuevo Password el cual deberá tener mínimo (15)posiciones <br>
+<br>
+<font color="#0000FF"><b>Nota: El 17/05/2016 Se le coloco la clave Proyectosacas12   y Con el procedimiento 2 </b></font><br>
+         : El 04/05/2016 Se le coloco la clave Calidadsacas15     y la anterior era  Proyectosacas16 <br>
+         : El 31/03/2017 Se le coloco la clave Sacassoporte031  y la anterior era  Merida2018 <br>
+         : El 05/05/2017 Se le coloco la clave Sacassoporte032  y la anterior era   Sacassoporte031 <br>
+         : El 20/06/2017 Se le coloco la clave Sacassoporte033  y la anterior era   Sacassoporte032 <br>
+		 : El 11/09/2017 Se le coloco la clave Sacassoporte034  y la anterior era   Sacassoporte033 <br>
+
+   <br>
+  <font color="#0000FF"><b>Primera Imagen:</b></font>
+  <br>
+
+<IMG SRC="Imagenes/SACAS/sacas002.JPG" ALT="PRUEBA" BORDER=2> <br>
+  <br>
+  <br>
+<font color="#0000FF"><b>PASO02:</b></font><br>
+• Luego en Unix en el servidor asacalinc01 <br>
+• En la Ruta :  /tcantv/appl/jbst02/jboss-5.1.0.GA      ejecutar el Script:  ./encriptarJboss.sh  Sacassoporte034 <br>
+• El resultado será el siguiente <br>
+• [apere7@asacalinc01 jboss-5.1.0.GA]$ ./encriptarJboss.sh Proyectosacas12 <br>
+<font color="#0000FF"><b>Encoded Password: 32d6ee6e35a9c5a04fa53b0a3c86e2b8</b></font><br>
+[apere7@asacalinc01 jboss-5.1.0.GA]$ <br>
+32d6ee6e35a9c5a04fa53b0a3c86e2b8 <br>
+
+
+<font color="#0000FF"><b>PASO03:</b></font><br>
+• Se le deberá colocar el password encriptado que genero el proceso anterior PASO2  en el ARCHIVO: credentials.properties <br>
+• Hacer  (su al ptht02)      su - ptht02 (Merida2018) <br>
+• Ruta :  /tcantv/appl/ptht02/Kettle <br>
+• script:    credentials.properties <br>
+• Se le deberá colocar el Password encriptado que genero el proceso anterior PASO2  <br>
+
+Asi esta el credentials.properties Modelo <br>
+user=penta <br>
+pass=32d6ee6e35a9c5a0a17b0ab8decd64c6 <br>
+rep=sacas <br>
+  <IMG SRC="Imagenes/SACAS/sacas003.JPG" ALT="PRUEBA" BORDER=2> <br>
+	  
+ <hr>
+<font color="#0000FF"><b>ESTA ES LA Falla:</b></font><br>
+Nota: El proceso de Importación en svn del grupo Coordinación Web y Portales  <br>
+           Utiliza el password y no debería ser  esto se le informa a Denis para que realicen la corrección de este proceso y lea el archivo encriptado. <br>
+<br>
+Ejemplo del comando y parametros el error que se presenta. <br>
+<font color="#000000"><b>./ImportaPerfilRol.sh</b></font>
+<font color="#FE2E2E"><b>CProyectosacas12</b></font>
+<font color="#0000FF"><b>BDBPMLINC01</b></font>
+<font color="#000000"><b>SACTGSCOR1</b></font> 
+<font color="#0000FF"><b>segsacas</b></font> 
+<font color="#0000FF"><b>S1386_2013</b></font><br>
+
+
+1)Nombre del Shell <br>
+2)Password del Spoon o Pentaho <br>
+3) Nombre base de datos <br>
+4) Usuario de base de datos <br>
+5) Usuario segsacas y password de la base de datos <br>
+<br>
+
+<font color="#0000FF"><b>Esta Falla que se presenta Puede ser por el Password encriptado no es el mismo o que estas utilizando menos de 15 posiciones</b></font><br>
+<br>
+Buenas Tardes, se probo el script de importación y arrojó el mismo error que se ha generado con los cambios que ha realizado alejandro. <br>
+<br>
+<br> 
+Last login: Thu Jul  2 03:44:44 2015 from 161.196.26.178 <br>
+   ____    _    _   _ _______     __					<br>
+  / ___|  / \  | \ | |_   _\ \   / /					<br>
+| |     / _ \ |  \| | | |  \ \ / / 						<br>	
+ | |___ / ___ \| |\  | | |   \ V /  					<br>
+  \____/_/   \_\_| \_| |_|    \_/   					<br>
+
+<br>
+[segsacas@asacalinc01 ~]$ cd Kettle/ <br>
+[segsacas@asacalinc01 Kettle]$ ./ImportaPerfilRol.sh Calidad2016 BDBPMLINC01 SACTGSCOR1 segsacas S1386_2013 <br>
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 33 <br>
+        at java.lang.String.charAt(String.java:686) <br>
+        at kitchenwrapper.KitchenWrapper.fromHexString(KitchenWrapper.java:151) <br>
+        at kitchenwrapper.KitchenWrapper.main(KitchenWrapper.java:72) <br>
+[segsacas@asacalinc01 Kettle]$ <br>
+<br>
+<br>
+[segsacas@asacalinc01 Kettle]$ ./ImportaPerfilRol.sh Merida2018 BDBPMLINC01 SACTGSCOR1 segsacas S1386_2013 <br>
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 33 <br>
+        at java.lang.String.charAt(String.java:686) <br>
+        at kitchenwrapper.KitchenWrapper.fromHexString(KitchenWrapper.java:151) <br>
+        at kitchenwrapper.KitchenWrapper.main(KitchenWrapper.java:72) <br>
+[segsacas@asacalinc01 Kettle]$ <br>
+<br>
+
+ <hr>
+	<br>
+	<br>
+	<br>
+ <hr>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>
